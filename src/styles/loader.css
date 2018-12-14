@@ -1,0 +1,108 @@
+main {
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.st0 {
+  fill: #fff;
+}
+.st1,
+.st2,
+.st3 {
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 3;
+  stroke-miterlimit: 10;
+}
+.st2,
+.st3 {
+  fill: none;
+}
+.st3 {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.signal {
+  animation: signal 0.75s infinite alternate ease-in-out;
+}
+.signal:nth-child(5) {
+  animation-delay: 1s;
+}
+.signal:nth-child(4) {
+  animation-delay: 0.75s;
+}
+.signal:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+@keyframes signal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.satellite {
+  animation: rotate 18s infinite linear;
+}
+
+.shaker {
+  animation: shake 3s infinite ease;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px);
+  }
+  10% {
+    transform: translate(-1px, -2px);
+  }
+  20% {
+    transform: translate(-3px, 0px);
+  }
+  30% {
+    transform: translate(3px, 2px);
+  }
+  40% {
+    transform: translate(1px, -1px);
+  }
+  50% {
+    transform: translate(-1px, 2px);
+  }
+  60% {
+    transform: translate(-3px, 1px);
+  }
+  70% {
+    transform: translate(3px, 1px);
+  }
+  80% {
+    transform: translate(-1px, -1px);
+  }
+  90% {
+    transform: translate(1px, 2px);
+  }
+  100% {
+    transform: translate(1px, -2px);
+  }
+}
+
+svg {
+  width: 60px;
+  height: 60px;
+}
+
+/*# sourceMappingURL=loader.css.map */
