@@ -1,0 +1,31 @@
+.feedComponent {
+  display: inline-block;
+  width: 345px;
+  // margin-top: -50px;
+}
+
+.feedComponentContainer {
+  display: inline-block;
+  background-color: white;
+  height: 80vh;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 3px;
+}
+
+.feedComponentTitle {
+  font-family: 'neue_montrealbold';
+  align-self: center;
+}
+
+.feedComponentHeader {
+  display: flex;
+  align-content: center;
+  height: 30px;
+}
+
+.feedComponentHeader > img {
+  padding: 0.2rem;
+  width: 25px;
+  margin-right: 0.2rem;
+}
