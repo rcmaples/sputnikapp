@@ -1,28 +1,39 @@
 main {
+  height: 98vh;
   padding: 6px;
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 }
 
-.st0 {
+.loader-st0 {
   fill: #fff;
 }
-.st1,
-.st2,
-.st3 {
+.loader-st1,
+.loader-st2,
+.loader-st3 {
   fill: #fff;
   stroke: #000;
   stroke-width: 3;
   stroke-miterlimit: 10;
 }
-.st2,
-.st3 {
+.loader-st2,
+.loader-st3 {
   fill: none;
 }
-.st3 {
+.loader-st3 {
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.satellite {
+  animation: rotate 18s infinite linear;
+}
+
+.shaker {
+  // animation: shake 3s infinite ease;
+  width: 60px;
+  height: 60px;
 }
 
 .signal {
@@ -45,16 +56,6 @@ main {
   to {
     opacity: 1;
   }
-}
-
-.satellite {
-  animation: rotate 18s infinite linear;
-}
-
-.shaker {
-  animation: shake 3s infinite ease;
-  width: 60px;
-  height: 60px;
 }
 
 @keyframes rotate {

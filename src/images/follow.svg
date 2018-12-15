@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="compass" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1024 1024" style="enable-background:new 0 0 1024 1024;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-width:70;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+<line class="st0" x1="512.4" y1="490.6" x2="512.4" y2="818.8"/>
+<g>
+	<path d="M510,78.2l385.1,860.3L511.7,799.2L128.3,938.6L510,78.2 M510,8.2c0,0-0.1,0-0.1,0c-27.6,0-52.7,16.3-63.9,41.6L64.3,910.2
+		c-11.4,25.7-6.3,55.6,12.8,76.2c13.5,14.4,32.1,22.2,51.2,22.2c8,0,16.1-1.4,23.9-4.2l359.5-130.6l359.5,130.6
+		c7.8,2.8,15.9,4.2,23.9,4.2c19.1,0,37.8-7.8,51.3-22.3c19.1-20.6,24.1-50.6,12.6-76.3L573.9,49.6C562.7,24.4,537.6,8.2,510,8.2
+		L510,8.2z"/>
+</g>
+</svg>
