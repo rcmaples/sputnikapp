@@ -53,6 +53,8 @@ main {
 
 .shaker {
   animation: shake 3s infinite ease;
+  width: 60px;
+  height: 60px;
 }
 
 @keyframes rotate {
@@ -98,11 +100,6 @@ main {
   100% {
     transform: translate(1px, -2px);
   }
-}
-
-svg {
-  width: 60px;
-  height: 60px;
 }
 
 /*# sourceMappingURL=loader.css.map */

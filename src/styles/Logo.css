@@ -1,0 +1,16 @@
+.cls-1,
+.cls-2 {
+  fill: #f0f0f0;
+}
+
+.cls-2 {
+  font-size: 126.6px;
+  font-family: 'collegiateregular';
+  letter-spacing: -0.03em;
+}
+
+.logo-img {
+  box-sizing: border-box;
+  height: 60px;
+  padding: 5px;
+}

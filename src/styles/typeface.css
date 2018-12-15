@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'collegiateregular';
+  src: url('../fonts/collegiate-webfont.woff2') format('woff2'),
+    url('../fonts/collegiate-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'neue_montrealbold_italic';
+  src: url('../fonts/neuemontreal-bolditalic-webfont.woff2') format('woff2'),
+    url('../fonts/neuemontreal-bolditalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'neue_montreallight_italic';
+  src: url('../fonts/neuemontreal-lightitalic-webfont.woff2') format('woff2'),
+    url('../fonts/neuemontreal-lightitalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'neue_montrealbold';
+  src: url('../fonts/neuemontreal-bold-webfont.woff2') format('woff2'),
+    url('../fonts/neuemontreal-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'neue_montreallight';
+  src: url('../fonts/neuemontreal-light-webfont.woff2') format('woff2'),
+    url('../fonts/neuemontreal-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
