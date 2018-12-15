@@ -6,7 +6,7 @@
 .pnp.js
 
 #fonts
-/src/fonts
+# /src/fonts
 
 # testing
 /coverage
