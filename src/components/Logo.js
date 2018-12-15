@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Logo.css';
+
 const LogoSvg = () => (
   <svg
     className="logo-img"
