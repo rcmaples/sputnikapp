@@ -1,16 +1,34 @@
 .feedComponent {
   display: inline-block;
   width: 345px;
-  // margin-top: -50px;
+  padding: 1rem;
+}
+
+.feedComponent--following {
+  width: 50%;
+}
+.feedComponent--popular {
+  width: 50%;
+}
+.feedComponent--repos {
+  width: 50%;
+}
+.feedComponent--starred {
+  width: 50%;
+}
+.feedComponent--watching {
+  width: 50%;
 }
 
 .feedComponentContainer {
-  display: inline-block;
+  display: flex;
   background-color: white;
   height: 80vh;
   width: 100%;
   padding: 0.5rem;
   border-radius: 3px;
+  justify-content: center;
+  align-items: center;
 }
 
 .feedComponentTitle {
