@@ -6,7 +6,8 @@
 }
 
 .hover {
-  width: 25vw;
+  // width: 25vw;
+  width: 396px;
   display: inline-block;
   position: relative;
   transition-duration: 1.3s;
@@ -34,4 +35,5 @@
 
 .text {
   font-size: x-large;
+  text-align: center;
 }
