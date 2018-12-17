@@ -7,11 +7,12 @@
 
 .feedComponent--following {
   flex: 0 0 20vw;
-  // width: 50%;
+  margin-bottom: -2rem;
 }
 .feedComponent--popular {
   width: 100%;
   height: 50%;
+  margin-bottom: -2rem;
 }
 .feedComponent--repos {
   width: 100%;
@@ -20,6 +21,7 @@
 .feedComponent--starred {
   width: 100%;
   height: 50%;
+  margin-bottom: -2rem;
 }
 .feedComponent--watching {
   width: 100%;

@@ -1,0 +1,37 @@
+/* Hover */
+@keyframes hover {
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+.hover {
+  width: 25vw;
+  display: inline-block;
+  position: relative;
+  transition-duration: 1.3s;
+  transition-property: transform;
+  transform: translateY(-10px);
+  animation-name: hover;
+  animation-duration: 1.3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+.notFoundContainer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  align-items: center;
+}
+
+.hero {
+  font-family: neue_montrealbold;
+  font-size: 10rem;
+}
+
+.text {
+  font-size: x-large;
+}
