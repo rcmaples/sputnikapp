@@ -1,0 +1,16 @@
+.landingPageContainer {
+  display: flex;
+  background-color: white;
+  height: 80vh;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 3px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 5px 0px hsla(0, 0%, 0%, 0.5);
+}
+
+.landingPage {
+  width: 80%;
+  max-width: 710px;
+}
