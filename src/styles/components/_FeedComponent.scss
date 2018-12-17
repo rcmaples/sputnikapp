@@ -2,34 +2,39 @@
   display: inline-block;
   width: 345px;
   padding: 1rem;
+  margin-bottom: 2rem;
 }
 
 .feedComponent--following {
-  width: 50%;
+  flex: 0 0 20vw;
+  // width: 50%;
 }
 .feedComponent--popular {
-  width: 50%;
+  width: 100%;
+  height: 50%;
 }
 .feedComponent--repos {
-  width: 50%;
+  width: 100%;
+  height: 50%;
 }
 .feedComponent--starred {
-  width: 50%;
+  width: 100%;
+  height: 50%;
 }
 .feedComponent--watching {
-  width: 50%;
+  width: 100%;
+  height: 50%;
 }
 
 .feedComponentContainer {
   display: flex;
   background-color: white;
-  height: 80vh;
+  height: 100%;
   width: 100%;
   padding: 0.5rem;
   border-radius: 3px;
   justify-content: center;
   align-items: center;
-  box-shadow: 2px 2px 5px 0px hsla(0, 0%, 0%, 0.5);
 }
 
 .feedComponentTitle {
@@ -47,4 +52,15 @@
   padding: 0.2rem;
   width: 25px;
   margin-right: 0.2rem;
+}
+
+.dashboard-center {
+  flex: 0 0 60vw;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard-right {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 20vw;
 }

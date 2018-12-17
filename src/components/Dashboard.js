@@ -3,10 +3,14 @@ import FeedComponent from './FeedComponent';
 const Dashboard = () => (
   <Fragment>
     <FeedComponent type="following" />
-    <FeedComponent type="watching" />
-    <FeedComponent type="starred" />
-    <FeedComponent type="repos" />
-    <FeedComponent type="popular" />
+    <div className="dashboard-center">
+      <FeedComponent type="watching" />
+      <FeedComponent type="starred" />
+    </div>
+    <div className="dashboard-right">
+      <FeedComponent type="repos" />
+      <FeedComponent type="popular" />
+    </div>
   </Fragment>
 );
 
