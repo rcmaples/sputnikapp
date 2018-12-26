@@ -8,9 +8,9 @@ export const LoginForm = () => (
       <fieldset>
         <legend>Welcome</legend>
         <p className="form-text">
-          To get started, please enter your email address and choose a password.
+          To get started, please enter your email address and password.
         </p>
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="emailaddress">Email Address:</label>
         <div className="email-field">
           <img
             src={astronaut}
@@ -19,10 +19,10 @@ export const LoginForm = () => (
           />
           <input
             type="text"
-            defaultValue="username"
-            id="username"
-            name="username"
-            autoComplete="username"
+            placeholder="soyuz@capsule.com"
+            id="emailaddress"
+            name="emailaddress"
+            autoComplete="emailaddress"
           />
         </div>
 
