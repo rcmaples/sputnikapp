@@ -1,0 +1,41 @@
+.registration-section {
+  background-color: white;
+  width: 320px;
+  margin-top: 44px;
+  height: fit-content;
+  border-radius: 4px;
+}
+
+.register-button {
+  background: linear-gradient(0deg, hsl(33, 3%, 50%), rgba(219, 215, 210, 1));
+  border: 1.25px solid #222;
+  border-radius: 4px;
+
+  overflow: visible;
+  height: 29px;
+  width: 82px;
+  font-size: 1.6rem;
+}
+
+.register-button:hover {
+  cursor: pointer;
+  box-shadow: 0px 3px 3px 0px hsla(0, 0%, 0%, 0.5);
+}
+.register-button:active {
+  cursor: pointer;
+  box-shadow: inset 0px 3px 3px 0px hsla(0, 0%, 0%, 0.4);
+}
+
+.registration-section legend {
+  font-size: 3.6rem;
+  font-weight: bold;
+  font-family: neue_montrealbold;
+  text-align: center;
+  max-width: fit-content;
+  padding: 0;
+}
+
+.form-text {
+  text-align: center;
+  margin-top: 0.4rem;
+}

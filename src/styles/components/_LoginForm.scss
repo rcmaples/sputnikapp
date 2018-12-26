@@ -1,7 +1,25 @@
 input[type='text'],
 input[type='email'],
 input[type='password'] {
-  width: 90%;
+  width: 82.887%;
+  height: 50px;
   padding: 4px 6px;
-  border-radius: 3px;
+  border: 1px solid black;
+  border-left: 0px;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+  font-weight: medium;
+}
+
+form {
+  width: 320px;
+}
+
+label {
+  margin-top: 20px;
+}
+
+fieldset {
+  border: none;
 }

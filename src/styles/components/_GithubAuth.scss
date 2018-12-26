@@ -1,0 +1,35 @@
+.github-section {
+  background-color: white;
+  width: 320px;
+  margin-top: 44px;
+  height: fit-content;
+  border-radius: 4px;
+  padding: 0 2rem;
+}
+
+.gh-header {
+  text-align: center;
+  font-family: neue_montrealbold;
+}
+
+.github-button {
+  margin: 0 auto 0rem auto;
+  background: linear-gradient(0deg, hsl(136, 36%, 44%), hsl(136, 71%, 66%));
+  border: 1.25px solid #222;
+  border-radius: 4px;
+  color: white;
+  overflow: visible;
+  height: 50px;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.github-button:hover {
+  cursor: pointer;
+  box-shadow: 0px 3px 3px 0px hsla(0, 0%, 0%, 0.5);
+}
+.github-button:active {
+  cursor: pointer;
+  box-shadow: inset 0px 3px 3px 0px hsla(0, 0%, 0%, 0.4);
+}
