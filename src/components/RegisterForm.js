@@ -1,6 +1,7 @@
 import React from 'react';
 import astronaut from '../images/astonaut-avatar.svg';
 import passkey from '../images/password-key.svg';
+import email from '../images/email.svg';
 
 export const RegistrationForm = () => (
   <section className="registration-section">
@@ -8,15 +9,22 @@ export const RegistrationForm = () => (
       <fieldset>
         <legend>Welcome</legend>
         <p className="form-text">
-          To get started, please enter your email address and choose a password.
+          To get started, please enter your details and choose a password.
         </p>
+        <label htmlFor="Name">Name:</label>
+        <div className="name-field">
+          <img src={astronaut} alt="name" className="form-icon default-color" />
+          <input
+            type="text"
+            placeholder="Yuri Gagarin"
+            id="name"
+            name="name"
+            // autoComplete="emailaddress"
+          />
+        </div>
         <label htmlFor="emailaddress">Email Address:</label>
         <div className="email-field">
-          <img
-            src={astronaut}
-            alt="email"
-            className=" form-icon default-color"
-          />
+          <img src={email} alt="email" className=" form-icon default-color" />
           <input
             type="text"
             placeholder="soyuz@capsule.com"
