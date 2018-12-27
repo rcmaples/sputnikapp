@@ -1,16 +1,43 @@
 .landingPageContainer {
   display: flex;
   background-color: white;
-  height: 80vh;
+  height: fit-content;
   width: 100%;
-  padding: 0.5rem;
+  padding: 1.6rem;
+  padding-bottom: 1.6rem;
   border-radius: 3px;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  flex-direction: column;
+}
+
+.landingPageContainer p {
+  margin: 0px 0px 1.6rem 0px;
 }
 
 .landingPage {
   width: 80%;
   max-width: 710px;
   margin-top: 1.6rem;
+}
+
+.landingPage-button {
+  background: linear-gradient(0deg, #015fdf, #1ed2fc);
+  border: 1.25px solid #222;
+  border-radius: 4px;
+  margin: 0 1rem 0 1rem;
+  overflow: visible;
+  height: 29px;
+  width: 9.2rem;
+  font-size: 1.6rem;
+  color: white;
+  text-align: center;
+}
+
+.landingPage-button:hover {
+  box-shadow: 0px 3px 3px 0px hsla(0, 0%, 0%, 0.4);
+  cursor: pointer;
+}
+.landingPage-button:active {
+  box-shadow: inset 0px 3px 3px 0px hsla(0, 0%, 0%, 0.4);
 }
