@@ -9,10 +9,12 @@ import {
   USER_LOADING
 } from './types';
 
+const API_URL = process.env.API_URL;
+
 // Registration
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post('/api/users/register', userData)
+    .post(API_URL + '/api/users/register', userData)
     .then(res => history.push('/login'))
     .catch(err =>
       dispatch({
@@ -25,7 +27,7 @@ export const registerUser = (userData, history) => dispatch => {
 // Login and get user token
 export const loginUser = userData => dispatch => {
   axios
-    .post('api/users/login', userData)
+    .post(API_URL + 'api/users/login', userData)
     .then(res => {
       const { token } = res.data;
       localStorage.setItem('jwtToken', token);
@@ -53,7 +55,7 @@ export const setCurrentUser = decoded => {
 export const getCurrentUser = () => dispatch => {
   dispatch(setUserLoading());
   axios
-    .get('/api/user/currentuser')
+    .get(API_URL + '/api/user/currentuser')
     .then(res =>
       dispatch({
         type: GET_CURRENT_USER,
