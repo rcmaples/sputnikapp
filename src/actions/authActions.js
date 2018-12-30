@@ -22,7 +22,6 @@ export const registerUser = (userData, history) => dispatch => {
     );
 };
 
-
 // Login and get user token
 export const loginUser = userData => dispatch => {
   axios
@@ -32,27 +31,27 @@ export const loginUser = userData => dispatch => {
       localStorage.setItem('jwtToken', token);
       setAuthToken(token);
       const decoded = jwt_decode(token);
-      dispatch(setCurrentUser(decoded))
+      dispatch(setCurrentUser(decoded));
     })
     .catch(err => {
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
-      })
-    })
-}
+      });
+    });
+};
 
 // set logged in user
 export const setCurrentUser = decoded => {
   return {
     type: SET_CURRENT_USER,
     payload: decoded
-  }
-}
+  };
+};
 
 // Get user
 export const getCurrentUser = () => dispatch => {
-  dispatch(setUserLoaded());
+  dispatch(setUserLoading());
   axios
     .get('/api/user/currentuser')
     .then(res =>
@@ -67,7 +66,7 @@ export const getCurrentUser = () => dispatch => {
         payload: err.response.data
       })
     );
-}
+};
 
 // load user
 export const setUserLoading = () => {
@@ -78,7 +77,7 @@ export const setUserLoading = () => {
 
 // log out user
 export const logoutUser = () => dispatch => {
-    localStorage.removeItem('jwtToken');
-    setAuthToken(false);
-    dispatch(setCurrentUser({}));
-}
+  localStorage.removeItem('jwtToken');
+  setAuthToken(false);
+  dispatch(setCurrentUser({}));
+};
