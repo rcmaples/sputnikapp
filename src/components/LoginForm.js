@@ -25,6 +25,8 @@ class LoginForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    // TODO: Add in conditional routing if user has/doesn't have a github token
+    // if they don't have a token, redirect to /github
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push('/dashboard');
     }
