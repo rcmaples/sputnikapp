@@ -1,5 +1,6 @@
 import React from 'react';
-import { GITHUB_CLIENT_ID, GITHUB_REDIRECT_URI } from '../config/github';
+const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
+const GITHUB_REDIRECT_URI = process.env.GITHUB_REDIRECT_URI;
 
 export const GithubAuth = () => (
   <section className="github-section">
