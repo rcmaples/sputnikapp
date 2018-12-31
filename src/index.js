@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import * as serviceWorker from './serviceWorker';
 import AppRouter from './routers/AppRouter';
+// require('dotenv').config();
 
 const app = <AppRouter />;
 

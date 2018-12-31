@@ -8,9 +8,11 @@ import {
   SET_CURRENT_USER,
   USER_LOADING
 } from './types';
+// import dotenv from 'dotenv';
+// dotenv.config();
 
-const API_URL = 'https://sputnik-server.herokuapp.com';
-
+const API_URL = process.env.REACT_APP_API_URL;
+console.log(API_URL);
 // Registration
 export const registerUser = (userData, history) => dispatch => {
   axios
