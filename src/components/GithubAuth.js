@@ -15,8 +15,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export const GithubAuth = () => {
-  // console.log(process.env.NODE_ENV);
-  console.dir(process.env);
+  console.log(process.env.NODE_ENV);
 
   return (
     <section className="github-section">
