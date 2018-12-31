@@ -2,44 +2,44 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## What?
+
+Sputnik is the missing dashboard for GitHub. Once users register and authorize the app on their GitHub profile, we will display relevant links and information about the projects and people that the user follows.
+
+The Dashboard aggregates data into four sections:
+
+- Starred - displays public activity on starred repos
+- Following - displays public activity from GitHub accounts you follow
+- Trending - displays trending repos for exploration
+- Repos - displays any activity on your own repos, forks, branches, PRs, etc...
+
+See a live version at https://www.sputnikapp.com (_note: WIP_ demo account doesn't work)
+
+## Why?
+
+I've frequently found myself beating my head against GitHub's more 'social' aspects. Either getting hit with too much information or none at all. The goal of Sputnik is to create an informative and useful dashboard to keep track of the projects you're actually interested in - in an easy to navigate and sensible manner.
+
+## How? (Technology Stack)
+
+- React
+- Node
+
+## Other important information:
+
+This repo relies on an external backend. Current backend can be found at [rcmaples/sputnik-server](https://github.com/rcmaples/sputnik-server). In order to work with Sputnik, you will need to clone both repos.
+
+**Currenly deploying to Heroku, so be sure to set up a Heroku build file for deployment!**
+
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can run all available CRA-APP scripts:
 
-### `npm start`
+- `yarn start`
+- [`yarn test`](https://facebook.github.io/create-react-app/docs/running-tests)
+- `npm run eject`
+- [`npm run build`](https://facebook.github.io/create-react-app/docs/deployment)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
+### For more information on CRA-apps:
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
