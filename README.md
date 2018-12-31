@@ -30,6 +30,21 @@ This repo relies on an external backend. Current backend can be found at [rcmapl
 
 **Currenly deploying to Heroku, so be sure to set up a Heroku build file for deployment!**
 
+## Why?
+
+I've frequently found myself beating my head against GitHub's more 'social' aspects. Either getting hit with too much information or none at all. The goal of Sputnik is to create an informative and useful dashboard to keep track of the projects you're actually interested in - in an easy to navigate and sensible manner.
+
+## How? (Technology Stack)
+
+- React
+- Node
+
+## Other important information:
+
+This repo relies on an external backend. Current backend can be found at [rcmaples/sputnik-server](https://github.com/rcmaples/sputnik-server). In order to work with Sputnik, you will need to clone both repos.
+
+**Currenly deploying to Heroku, so be sure to set up a Heroku build file for deployment!**
+
 ## Available Scripts
 
 In the project directory, you can run all available CRA-APP scripts:
