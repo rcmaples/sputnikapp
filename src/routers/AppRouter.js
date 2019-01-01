@@ -7,7 +7,7 @@ import '../styles/styles.scss';
 import Header from '../components/Header';
 import LoginForm from '../components/LoginForm';
 import RegisterForm from '../components/RegisterForm';
-import { GithubAuth } from '../components/GithubAuth';
+import GithubAuth from '../components/GithubAuth';
 import Dashboard from '../components/Dashboard';
 import NotFoundPage from '../components/NotFoundPage';
 import LandingPage from '../components/LandingPage';
@@ -40,7 +40,11 @@ class AppRouter extends Component {
                 <Route path="/" component={LandingPage} exact={true} />
                 <Route path="/login" component={LoginForm} exact={true} />
                 <Route path="/signup" component={RegisterForm} exact={true} />
-                <Route path="/github" component={GithubAuth} exact={true} />
+                <PrivateRoute
+                  path="/github/:code?"
+                  component={GithubAuth}
+                  exact={true}
+                />
                 <PrivateRoute
                   path="/dashboard"
                   component={Dashboard}
