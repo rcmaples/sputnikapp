@@ -1,6 +1,21 @@
 import React from 'react';
-const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
-const GITHUB_REDIRECT_URI = process.env.GITHUB_REDIRECT_URI;
+
+let GITHUB_CLIENT_ID, GITHUB_REDIRECT_URI;
+console.log('env: ', process.env.NODE_ENV);
+console.log('env: ', process.env);
+
+if (process.env.NODE_ENV === 'development') {
+  const {
+    GITHUB_CLIENT_ID_DEV,
+    GITHUB_REDIRECT_URI_DEV
+  } = require('../config/config');
+  GITHUB_CLIENT_ID = GITHUB_CLIENT_ID_DEV;
+  GITHUB_REDIRECT_URI = GITHUB_REDIRECT_URI_DEV;
+} else {
+  GITHUB_CLIENT_ID = '562ddd888f38676cfe39';
+  GITHUB_REDIRECT_URI =
+    'http://sputnik-server.herokuapp.com/api/github/authorize/';
+}
 
 export const GithubAuth = () => (
   <section className="github-section">
