@@ -6,22 +6,29 @@ import {
   GET_ERRORS,
   GET_CURRENT_USER,
   SET_CURRENT_USER,
-  USER_LOADING
+  USER_LOADING,
+  GET_GITHUB_TOKEN
 } from './types';
+let API_URL = '';
 
-const API_URL = 'https://sputnik-server.herokuapp.com';
+process.env.NODE_ENV === 'development'
+  ? (API_URL = 'http://localhost:5000')
+  : (API_URL = 'https://sputnik-server.herokuapp.com');
+
+// console.log('authActions will be posting to: ', API_URL);
 
 // Registration
 export const registerUser = (userData, history) => dispatch => {
   axios
     .post(`${API_URL}/api/users/register`, userData)
     .then(res => history.push('/login'))
-    .catch(err =>
+    .catch(err => {
+      console.log(err);
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
-      })
-    );
+      });
+    });
 };
 
 // Login and get user token
@@ -82,4 +89,23 @@ export const logoutUser = () => dispatch => {
   localStorage.removeItem('jwtToken');
   setAuthToken(false);
   dispatch(setCurrentUser({}));
+};
+
+export const getGithubToken = code => dispatch => {
+  // dispatch(setUserLoading);
+
+  axios
+    .get(`${API_URL}/api/github/authorize/${code}`)
+    .then(res =>
+      dispatch({
+        type: GET_GITHUB_TOKEN,
+        payload: res.data.access_token
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
 };

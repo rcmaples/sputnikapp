@@ -1,7 +1,8 @@
 import {
   SET_CURRENT_USER,
   USER_LOADING,
-  GET_CURRENT_USER
+  GET_CURRENT_USER,
+  GET_GITHUB_TOKEN
 } from '../actions/types';
 
 const isEmpty = require('is-empty');
@@ -9,7 +10,8 @@ const isEmpty = require('is-empty');
 const initialState = {
   isAuthenticated: false,
   user: {},
-  loading: false
+  loading: false,
+  github_token: {}
 };
 
 export default function(state = initialState, action) {
@@ -29,6 +31,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         profile: action.payload,
+        loading: false
+      };
+    case GET_GITHUB_TOKEN:
+      return {
+        ...state,
+        github_token: action.payload,
         loading: false
       };
     default:

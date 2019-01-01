@@ -2,3 +2,5 @@ export const GET_ERRORS = 'GET_ERRORS';
 export const USER_LOADING = 'USER_LOADING';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const GET_CURRENT_USER = 'GET_CURRENT_USER';
+export const SET_GITHUB_TOKEN = 'SET_GITHUB_TOKEN';
+export const GET_GITHUB_TOKEN = 'GET_GITHUB_TOKEN';
