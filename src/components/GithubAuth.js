@@ -13,8 +13,8 @@ if (process.env.NODE_ENV === 'development') {
   GITHUB_CLIENT_ID = GITHUB_CLIENT_ID_DEV;
   GITHUB_REDIRECT_URI = GITHUB_REDIRECT_URI_DEV;
 } else {
-  GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
-  GITHUB_REDIRECT_URI = process.env.GITHUB_REDIRECT_URI;
+  GITHUB_CLIENT_ID = '562ddd888f38676cfe39';
+  GITHUB_REDIRECT_URI = 'https://www.sputnikapp.com/github';
 }
 
 class GithubAuth extends Component {
