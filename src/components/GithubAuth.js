@@ -21,9 +21,14 @@ if (process.env.NODE_ENV === 'development') {
 class GithubAuth extends Component {
   componentDidMount() {
     if (this.props.location.search) {
-      console.log('hi');
       GITHUB_CODE = this.props.location.search.split('=')[1];
       this.props.getGithubToken(GITHUB_CODE);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.github_token) {
+      this.props.history.push('/dashboard');
     }
   }
 
