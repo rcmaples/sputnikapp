@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import FeedComponent from './FeedComponent';
-// const Dashboard = () => ;
+import { connect } from 'react-redux';
+
 
 class Dashboard extends Component {
   render() {
@@ -20,4 +21,9 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(mapStateToProps)(Dashboard);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authActions';
+import { Link } from 'react-router-dom';
 import empty from 'is-empty';
 import LogoSvg from './Logo';
 
@@ -14,7 +15,10 @@ class Header extends Component {
     const { user } = this.props.auth;
     return (
       <header>
-        <LogoSvg />
+        <Link to="/login">
+          <LogoSvg />
+        </Link>
+
         {!empty(user) ? (
           <button onClick={this.onLogoutClick} className="logout-button">
             Logout

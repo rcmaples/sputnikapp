@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import astronaut from '../images/astonaut-avatar.svg';
 import passkey from '../images/password-key.svg';
-// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { loginUser } from '../actions/authActions';
-// import classnames from 'classnames';
+import { loginUser, setGitHubToken } from '../actions/authActions';
+import empty from 'is-empty';
 
 class LoginForm extends Component {
   constructor() {
@@ -18,17 +17,32 @@ class LoginForm extends Component {
   }
 
   componentDidMount() {
+    let token = localStorage.getItem('github_token');
+
     // If logged in and user navigates to Login page, should redirect them to dashboard
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
+    if (empty(token)) {
+      if (this.props.auth.isAuthenticated) {
+        this.props.history.push('/github');
+      }
+    } else {
+      this.props.setGitHubToken(token);
+      if (this.props.auth.isAuthenticated) {
+        this.props.history.push('/dashboard');
+      }
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    // TODO: Add in conditional routing if user has/doesn't have a github token
-    // if they don't have a token, redirect to /github
-    if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
+    let token = localStorage.getItem('github_token');
+    if (empty(token)) {
+      if (nextProps.auth.isAuthenticated) {
+        this.props.history.push('/github');
+      }
+    } else {
+      nextProps.setGitHubToken(token);
+      if (nextProps.auth.isAuthenticated) {
+        this.props.history.push('/dashboard');
+      }
     }
 
     if (nextProps.errors) {
@@ -144,5 +158,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loginUser }
+  { loginUser, setGitHubToken }
 )(LoginForm);
