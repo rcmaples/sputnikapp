@@ -12,10 +12,9 @@ if (process.env.NODE_ENV === 'development') {
   } = require('../config/config');
   GITHUB_CLIENT_ID = GITHUB_CLIENT_ID_DEV;
   GITHUB_REDIRECT_URI = GITHUB_REDIRECT_URI_DEV;
-  // API_URL = 'http://localhost:5000/';
 } else {
-  GITHUB_CLIENT_ID = '562ddd888f38676cfe39';
-  // API_URL = 'http://sputnik-server.herokuapp.com/api/github/authorize/';
+  GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
+  GITHUB_REDIRECT_URI = process.env.GITHUB_REDIRECT_URI;
 }
 
 class GithubAuth extends Component {
