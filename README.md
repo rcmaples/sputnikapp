@@ -54,8 +54,16 @@ In the project directory, you can run all available CRA-APP scripts:
 - `npm run eject`
 - [`npm run build`](https://facebook.github.io/create-react-app/docs/deployment)
 
+---
+
 ### For more information on CRA-apps:
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Special Thanks
+
+Special Thanks to [BrowserStack](https://www.browserstack.com) for providing cross browser testing.
+
+<a href="https://www.browserstack.com"><img src="./Browserstack-logo.svg" alt="BrowserStack" width="40%" /></a>
