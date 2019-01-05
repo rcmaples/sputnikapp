@@ -107,7 +107,7 @@ class LoginForm extends Component {
             </div>
 
             <label htmlFor="password">Password:</label>
-            <div>
+            <div className="password-field">
               <img
                 src={passkey}
                 alt="passkey"
@@ -147,8 +147,8 @@ class LoginForm extends Component {
 
 LoginForm.propTypes = {
   loginUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
-  // errors: PropTypes.string.isRequired
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
