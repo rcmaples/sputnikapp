@@ -1,0 +1,96 @@
+{
+  viewer {
+    login
+    followers(last:10) {
+      nodes {
+        login
+        following(last:10) {
+          	nodes {
+              login
+            }
+          }
+      }
+    }
+    starredRepositories(first:10){
+      nodes {
+        name
+        forkCount
+        stargazers(first:1){
+          totalCount
+        }
+        commitComments(first:1){
+          nodes {
+            bodyText
+            author(){
+              login
+            }
+
+
+          }
+        }
+      }
+    }
+  }
+}
+
+
+{
+  repository(owner: "rcmaples", name: "sputnikapp") {
+    defaultBranchRef {
+      target {
+        ... on Commit {
+          commitUrl
+          committedDate
+          author {
+            user {
+              login
+              avatarUrl
+            }
+          }
+          changedFiles
+          additions
+          deletions
+        }
+      }
+    }
+    pullRequests(last: 1) {
+      nodes {
+        additions
+        deletions
+        changedFiles
+      }
+    }
+  }
+}
+
+
+// See all repos owned by viewer
+
+{
+  viewer {
+    id
+    login
+    repositories(orderBy: {field: UPDATED_AT, direction: DESC}, last:100) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+       cursor
+       node {
+        name
+        url
+        forkCount
+        stargazers {
+          totalCount
+        }
+        watchers {
+          totalCount
+        }
+      }
+      }
+    }
+  }
+}
