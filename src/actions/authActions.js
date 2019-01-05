@@ -23,7 +23,6 @@ export const registerUser = (userData, history) => dispatch => {
     .post(`${API_URL}/api/users/register`, userData)
     .then(res => history.push('/login'))
     .catch(err => {
-      console.log(err);
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
@@ -45,10 +44,9 @@ export const loginUser = userData => dispatch => {
       dispatch(setGitHubToken(github_access_token));
     })
     .catch(err => {
-      console.error(err);
       dispatch({
         type: GET_ERRORS,
-        payload: err
+        payload: err.response.data
       });
     });
 };

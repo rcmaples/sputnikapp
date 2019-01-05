@@ -22,7 +22,6 @@ class RegisterForm extends Component {
   componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
     }
   }
 
@@ -82,6 +81,7 @@ class RegisterForm extends Component {
                 name="name"
                 autoComplete="name"
               />
+              <span className="red-text">{errors.name}</span>
             </div>
             <label htmlFor="email">Email Address:</label>
             <div className="email-field">
@@ -104,10 +104,11 @@ class RegisterForm extends Component {
                 name="email"
                 autoComplete="emailaddress"
               />
+              <span className="red-text">{errors.email}</span>
             </div>
 
             <label htmlFor="password">Password:</label>
-            <div>
+            <div className="password-field">
               <img
                 src={passkey}
                 alt="passkey"
@@ -126,10 +127,11 @@ class RegisterForm extends Component {
                 name="password"
                 autoComplete="new-password"
               />
+              <span className="red-text">{errors.password}</span>
             </div>
 
             <label htmlFor="password-verification">Re-type Password:</label>
-            <div>
+            <div classNBame="password-field">
               <img
                 src={passkey}
                 alt="passkey"
@@ -148,6 +150,7 @@ class RegisterForm extends Component {
                 name="password2"
                 autoComplete="new-password"
               />
+              <span className="red-text">{errors.password2}</span>
             </div>
 
             <input
@@ -165,8 +168,8 @@ class RegisterForm extends Component {
 
 RegisterForm.propTypes = {
   registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
-  // errors: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
