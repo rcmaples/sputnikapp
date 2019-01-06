@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import FeedComponent from './FeedComponent';
 import { connect } from 'react-redux';
 
 class Dashboard extends Component {
   render() {
     return (
-      <Fragment>
+      <div className="dashboard">
         <FeedComponent type="following" />
         <div className="dashboard-center">
           <FeedComponent type="watching" />
@@ -15,7 +15,7 @@ class Dashboard extends Component {
           <FeedComponent type="repos" />
           <FeedComponent type="popular" />
         </div>
-      </Fragment>
+      </div>
     );
   }
 }
