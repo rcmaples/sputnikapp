@@ -1,66 +1,89 @@
 // import React, { Component } from 'react';
-import React from 'react';
+import React, { Component } from 'react';
 import iconFollow from '../images/follow.svg';
 import iconPopular from '../images/popular.svg';
 import iconRepos from '../images/repos.svg';
 import iconStar from '../images/starred.svg';
 import iconWatch from '../images/watch.svg';
-
+import List from './List';
 import Loader from './Loader';
 
-const FeedComponent = props => {
-  let icon, alt, name, className;
+class FeedComponent extends Component {
+  state = {
+    loading: true,
+    actors: null
+  };
 
-  switch (props.type) {
-    case 'following':
-      icon = iconFollow;
-      alt = 'following';
-      name = 'Following';
-      className = 'feedComponent--following';
-      break;
-    case 'popular':
-      icon = iconPopular;
-      alt = 'popular';
-      name = 'Trending';
-      className = 'feedComponent--popular';
-      break;
-    case 'repos':
-      icon = iconRepos;
-      alt = 'repos';
-      name = 'Your Repos';
-      className = 'feedComponent--repos';
-      break;
-    case 'starred':
-      icon = iconStar;
-      alt = 'starred';
-      name = 'Starred';
-      className = 'feedComponent--starred';
-      break;
-    case 'watching':
-      icon = iconWatch;
-      alt = 'watching';
-      name = 'Watching';
-      className = 'feedComponent--watching';
-      break;
-    default:
-      icon = null;
-      alt = null;
-      name = null;
-      className = null;
-      break;
+  componentDidMount() {
+    this.setState({ loading: true });
+    if (this.props.type === 'following') {
+      // fetch(`https://api.github.com/users/rcmaples/received_events/public`)
+      fetch(`https://randomuser.me/api/?lego&results=50`)
+        .then(json => json.json())
+        .then(actors => {
+          this.setState({
+            loading: false,
+            actors: actors.results
+          });
+        });
+    }
   }
 
-  return (
-    <div className={`feedComponent ${className}`}>
-      <div className="feedComponentHeader">
-        <img src={icon} alt={alt} />
-        <span className="feedComponentTitle">{name}</span>
+  renderSwitch(type) {
+    switch (type) {
+      case 'following':
+        this.icon = iconFollow;
+        this.alt = 'following';
+        this.name = 'Following';
+        this.className = 'feedComponent--following';
+        break;
+      case 'popular':
+        this.icon = iconPopular;
+        this.alt = 'popular';
+        this.name = 'Trending';
+        this.className = 'feedComponent--popular';
+        break;
+      case 'repos':
+        this.icon = iconRepos;
+        this.alt = 'repos';
+        this.name = 'Your Repos';
+        this.className = 'feedComponent--repos';
+        break;
+      case 'starred':
+        this.icon = iconStar;
+        this.alt = 'starred';
+        this.name = 'Starred';
+        this.className = 'feedComponent--starred';
+        break;
+      case 'watching':
+        this.icon = iconWatch;
+        this.alt = 'watching';
+        this.name = 'Watching';
+        this.className = 'feedComponent--watching';
+        break;
+      default:
+        this.icon = null;
+        this.alt = null;
+        this.name = null;
+        this.className = null;
+        break;
+    }
+  }
+
+  render() {
+    this.renderSwitch(this.props.type);
+    return (
+      <div className={`feedComponent ${this.className}`}>
+        <div className="feedComponentHeader">
+          <img src={this.icon} alt={this.alt} />
+          <span className="feedComponentTitle">{this.name}</span>
+        </div>
+        <div className="feedComponentContainer">
+          {this.state.loading ? <Loader /> : <List items={this.state.actors} />}
+        </div>
       </div>
-      <div className="feedComponentContainer">
-        <Loader />
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default FeedComponent;

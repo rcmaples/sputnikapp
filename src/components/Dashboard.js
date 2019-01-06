@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import FeedComponent from './FeedComponent';
 import { connect } from 'react-redux';
 
-
 class Dashboard extends Component {
   render() {
     return (

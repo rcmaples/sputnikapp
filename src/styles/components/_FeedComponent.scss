@@ -36,7 +36,8 @@
   padding: 0.5rem;
   border-radius: 3px;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
+  overflow: auto;
 }
 
 .feedComponentTitle {
