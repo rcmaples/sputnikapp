@@ -23,9 +23,10 @@
 }
 
 .shaker {
-  // animation: shake 3s infinite ease;
+  animation: shake 10s infinite ease;
   width: 60px;
   height: 60px;
+  align-self: center;
 }
 
 .signal {

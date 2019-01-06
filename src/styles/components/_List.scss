@@ -1,0 +1,42 @@
+// .list * {
+//   border: 1px solid red;
+// }
+
+.list {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.avatar {
+  border-radius: 100%;
+  border: 2px solid #333333;
+  height: 5.5rem;
+
+  // float: left;
+  margin: 2px;
+}
+
+.list p {
+  margin: 0;
+}
+
+.list-item {
+  display: flex;
+  margin: 0.6rem;
+  outline: 1.5px solid #f3f0ec;
+  padding: 0.3rem;
+}
+
+.user-details {
+  margin-left: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-name {
+  font-weight: bold;
+}
+.user-email {
+  font-weight: normal;
+}
