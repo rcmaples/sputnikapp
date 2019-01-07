@@ -21,8 +21,12 @@ process.env.NODE_ENV === 'development'
 export const registerUser = (userData, history) => dispatch => {
   axios
     .post(`${API_URL}/api/users/register`, userData)
-    .then(res => history.push('/login'))
+    .then(res => {
+      dispatch(setUserLoading(false));
+      history.push('/login');
+    })
     .catch(err => {
+      dispatch(setUserLoading(false));
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
@@ -42,8 +46,10 @@ export const loginUser = userData => dispatch => {
       const decoded = jwt_decode(token);
       dispatch(setCurrentUser(decoded));
       dispatch(setGitHubToken(github_access_token));
+      dispatch(setUserLoading(false));
     })
     .catch(err => {
+      dispatch(setUserLoading(false));
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
@@ -68,27 +74,30 @@ export const setGitHubToken = token => {
 
 // Get user
 export const getCurrentUser = () => dispatch => {
-  dispatch(setUserLoading());
+  dispatch(setUserLoading(true));
   axios
     .get(`${API_URL}/api/user/currentuser`)
-    .then(res =>
+    .then(res => {
       dispatch({
         type: GET_CURRENT_USER,
         payload: res.data
-      })
-    )
-    .catch(err =>
+      });
+      dispatch(setUserLoading(false));
+    })
+    .catch(err => {
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
-      })
-    );
+      });
+      dispatch(setUserLoading(false));
+    });
 };
 
 // load user
-export const setUserLoading = () => {
+export const setUserLoading = loading => {
   return {
-    type: USER_LOADING
+    type: USER_LOADING,
+    payload: loading
   };
 };
 
@@ -99,10 +108,11 @@ export const logoutUser = () => dispatch => {
   setAuthToken(false);
   dispatch(setCurrentUser({}));
   dispatch(setGitHubToken(''));
+  dispatch(setUserLoading(false));
 };
 
 export const getGithubToken = code => dispatch => {
-  dispatch(setUserLoading);
+  dispatch(setUserLoading(true));
   axios
     .get(`${API_URL}/api/github/authorize/${code}`)
     .then(res => {
@@ -114,13 +124,15 @@ export const getGithubToken = code => dispatch => {
     })
     .then(res => {
       dispatch(setGithubToken(res.data.access_token));
+      dispatch(setUserLoading(false));
     })
-    .catch(err =>
+    .catch(err => {
       dispatch({
         type: GET_ERRORS,
         payload: err
-      })
-    );
+      });
+      dispatch(setUserLoading(false));
+    });
 };
 
 export const setGithubToken = token => dispatch => {
@@ -128,15 +140,19 @@ export const setGithubToken = token => dispatch => {
   const data = {
     github_access_token: token
   };
-  dispatch(setUserLoading);
+  dispatch(setUserLoading(true));
   axios
     .patch(`${API_URL}/api/users/token`, data, {
       headers: {
         Authorization: jwtToken
       }
     })
-    .then(res =>
-      localStorage.setItem('github_token', res.data.github_access_token)
-    )
-    .catch(err => console.error(err));
+    .then(res => {
+      localStorage.setItem('github_token', res.data.github_access_token);
+      dispatch(setUserLoading(false));
+    })
+    .catch(err => {
+      console.error(err);
+      dispatch(setUserLoading(false));
+    });
 };

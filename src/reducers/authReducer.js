@@ -26,7 +26,7 @@ export default function(state = initialState, action) {
     case USER_LOADING:
       return {
         ...state,
-        loading: true
+        loading: action.payload
       };
     case GET_CURRENT_USER:
       return {
