@@ -3,7 +3,12 @@ import astronaut from '../images/astonaut-avatar.svg';
 import passkey from '../images/password-key.svg';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { loginUser, setGitHubToken } from '../actions/authActions';
+import {
+  loginUser,
+  setGitHubToken,
+  setUserLoading
+} from '../actions/authActions';
+import Modal from './Modal';
 import empty from 'is-empty';
 
 class LoginForm extends Component {
@@ -12,13 +17,14 @@ class LoginForm extends Component {
     this.state = {
       email: '',
       password: '',
+      loading: false,
       errors: {}
     };
   }
 
   componentDidMount() {
     let token = localStorage.getItem('github_token');
-
+    console.log(this.props.auth.loading);
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (empty(token)) {
       if (this.props.auth.isAuthenticated) {
@@ -58,7 +64,8 @@ class LoginForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-
+    console.log('setting user loading to true...');
+    this.props.setUserLoading(true);
     const userData = {
       email: this.state.email,
       password: this.state.password
@@ -72,6 +79,7 @@ class LoginForm extends Component {
 
     return (
       <section className="registration-section">
+        <Modal show={this.props.auth.loading} handleClose={this.hideModal} />
         <form onSubmit={this.onSubmit}>
           <fieldset>
             <legend>Welcome</legend>
@@ -153,10 +161,11 @@ LoginForm.propTypes = {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
+  loading: state.loading
 });
 
 export default connect(
   mapStateToProps,
-  { loginUser, setGitHubToken }
+  { loginUser, setGitHubToken, setUserLoading }
 )(LoginForm);
