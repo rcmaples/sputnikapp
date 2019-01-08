@@ -1,7 +1,7 @@
 import { GET_FOLLOWER_LIST, GET_FOLLOWER_ACT } from '../actions/types';
 
 const initialState = {
-  stuff: true
+  followers: {}
 };
 
 export default function(state = initialState, action) {
@@ -12,7 +12,8 @@ export default function(state = initialState, action) {
       };
     case GET_FOLLOWER_LIST:
       return {
-        ...state
+        ...state,
+        followers: action.payload
       };
     default:
       return state;

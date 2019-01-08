@@ -1,27 +1,31 @@
-// import React, { Component } from 'react';
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { getFollowList } from '../actions/follwerActions';
 import List from './List';
 import Loader from './Loader';
-
+let token = localStorage.getItem('github_token');
 class FeedComponent extends Component {
   state = {
-    loading: true,
-    actors: null
+    loading: true
   };
 
   componentDidMount() {
     this.setState({ loading: true });
     if (this.props.type === 'following') {
-      // fetch(`https://api.github.com/users/rcmaples/received_events/public`)
-      fetch(`https://randomuser.me/api/?lego&results=50`)
-        .then(json => json.json())
-        .then(actors => {
-          this.setState({
-            loading: false,
-            actors: actors.results
-          });
-        });
+      this.props.getFollowList(token);
+      this.setState({ loading: false });
+    }
+    if (this.props.type === 'watching') {
+      console.log('watch');
+    }
+    if (this.props.type === 'starred') {
+      console.log('star');
+    }
+    if (this.props.type === 'repos') {
+      console.log('repos');
+    }
+    if (this.props.type === 'popular') {
+      console.log('pop');
     }
   }
 
@@ -33,11 +37,28 @@ class FeedComponent extends Component {
           <span className="feedComponentTitle">{this.props.name}</span>
         </div>
         <div className="feedComponentContainer">
-          {this.state.loading ? <Loader /> : <List items={this.state.actors} />}
+          {this.state.loading ? (
+            <Loader />
+          ) : (
+            <List items={this.props.followers.followers} />
+          )}
         </div>
       </div>
     );
   }
 }
 
-export default FeedComponent;
+const mapStateToProps = (state, ownProps) => ({
+  auth: state.auth,
+  errors: state.errors,
+  followers: state.followers,
+  starred: state.starred,
+  repos: state.repos,
+  watching: state.watching,
+  trending: state.trending
+});
+
+export default connect(
+  mapStateToProps,
+  { getFollowList }
+)(FeedComponent);

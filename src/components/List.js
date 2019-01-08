@@ -9,15 +9,10 @@ const List = props => {
     <div className="list">
       {items.map(item => {
         return (
-          <div key={item.id.value} className="list-item">
-            <img
-              src={item.picture.thumbnail}
-              alt={item.login.username}
-              className="avatar"
-            />
+          <div key={item.id} className="list-item">
+            <img src={item.avatar_url} alt={item.login} className="avatar" />
             <div className="user-details">
-              <p className="user-name">{item.login.username}</p>
-              <p className="user-email">{item.email}</p>
+              <p className="user-name">{item.login}</p>
             </div>
           </div>
         );

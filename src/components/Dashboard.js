@@ -6,7 +6,20 @@ import iconPopular from '../images/popular.svg';
 import iconRepos from '../images/repos.svg';
 import iconStar from '../images/starred.svg';
 import iconWatch from '../images/watch.svg';
+import { setGitHubToken } from '../actions/authActions';
+import empty from 'is-empty';
+let token = localStorage.getItem('github_token');
 class Dashboard extends Component {
+  // constructor(props){
+  //   super(props);
+  //   props.
+  // }
+  componentDidMount() {
+    if (empty(this.props.auth.github_token) && token) {
+      this.props.setGitHubToken(token);
+    }
+  }
+
   render() {
     return (
       <div className="dashboard">
@@ -16,6 +29,7 @@ class Dashboard extends Component {
           alt="following"
           name="Following"
           className="feedComponent--following"
+          // token={token}
         />
         <div className="dashboard-center">
           <FeedComponent
@@ -56,7 +70,15 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
+  followers: state.followers,
+  starred: state.starred,
+  repos: state.repos,
+  watching: state.watching,
+  trending: state.trending
 });
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(
+  mapStateToProps,
+  { setGitHubToken }
+)(Dashboard);
