@@ -24,7 +24,6 @@ class LoginForm extends Component {
 
   componentDidMount() {
     let token = localStorage.getItem('github_token');
-    console.log(this.props.auth.loading);
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (empty(token)) {
       if (this.props.auth.isAuthenticated) {
@@ -64,7 +63,7 @@ class LoginForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log('setting user loading to true...');
+
     this.props.setUserLoading(true);
     const userData = {
       email: this.state.email,

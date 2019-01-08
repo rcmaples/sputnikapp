@@ -1,89 +1,64 @@
-// import React, { Component } from 'react';
 import React, { Component } from 'react';
-import iconFollow from '../images/follow.svg';
-import iconPopular from '../images/popular.svg';
-import iconRepos from '../images/repos.svg';
-import iconStar from '../images/starred.svg';
-import iconWatch from '../images/watch.svg';
+import { connect } from 'react-redux';
+import { getFollowList } from '../actions/follwerActions';
 import List from './List';
 import Loader from './Loader';
-
+let token = localStorage.getItem('github_token');
 class FeedComponent extends Component {
   state = {
-    loading: true,
-    actors: null
+    loading: true
   };
 
   componentDidMount() {
     this.setState({ loading: true });
     if (this.props.type === 'following') {
-      // fetch(`https://api.github.com/users/rcmaples/received_events/public`)
-      fetch(`https://randomuser.me/api/?lego&results=50`)
-        .then(json => json.json())
-        .then(actors => {
-          this.setState({
-            loading: false,
-            actors: actors.results
-          });
-        });
+      this.props.getFollowList(token);
+      this.setState({ loading: false });
     }
-  }
-
-  renderSwitch(type) {
-    switch (type) {
-      case 'following':
-        this.icon = iconFollow;
-        this.alt = 'following';
-        this.name = 'Following';
-        this.className = 'feedComponent--following';
-        break;
-      case 'popular':
-        this.icon = iconPopular;
-        this.alt = 'popular';
-        this.name = 'Trending';
-        this.className = 'feedComponent--popular';
-        break;
-      case 'repos':
-        this.icon = iconRepos;
-        this.alt = 'repos';
-        this.name = 'Your Repos';
-        this.className = 'feedComponent--repos';
-        break;
-      case 'starred':
-        this.icon = iconStar;
-        this.alt = 'starred';
-        this.name = 'Starred';
-        this.className = 'feedComponent--starred';
-        break;
-      case 'watching':
-        this.icon = iconWatch;
-        this.alt = 'watching';
-        this.name = 'Watching';
-        this.className = 'feedComponent--watching';
-        break;
-      default:
-        this.icon = null;
-        this.alt = null;
-        this.name = null;
-        this.className = null;
-        break;
+    if (this.props.type === 'watching') {
+      console.log('watch');
+    }
+    if (this.props.type === 'starred') {
+      console.log('star');
+    }
+    if (this.props.type === 'repos') {
+      console.log('repos');
+    }
+    if (this.props.type === 'popular') {
+      console.log('pop');
     }
   }
 
   render() {
-    this.renderSwitch(this.props.type);
     return (
-      <div className={`feedComponent ${this.className}`}>
+      <div className={`feedComponent ${this.props.className}`}>
         <div className="feedComponentHeader">
-          <img src={this.icon} alt={this.alt} />
-          <span className="feedComponentTitle">{this.name}</span>
+          <img src={this.props.icon} alt={this.props.alt} />
+          <span className="feedComponentTitle">{this.props.name}</span>
         </div>
         <div className="feedComponentContainer">
-          {this.state.loading ? <Loader /> : <List items={this.state.actors} />}
+          {this.state.loading ? (
+            <Loader />
+          ) : (
+            <List items={this.props.followers.followers} />
+          )}
         </div>
       </div>
     );
   }
 }
 
-export default FeedComponent;
+const mapStateToProps = (state, ownProps) => ({
+  auth: state.auth,
+  errors: state.errors,
+  followers: state.followers,
+  starred: state.starred,
+  repos: state.repos,
+  watching: state.watching,
+  trending: state.trending
+});
+
+export default connect(
+  mapStateToProps,
+  { getFollowList }
+)(FeedComponent);
