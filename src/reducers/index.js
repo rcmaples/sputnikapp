@@ -6,6 +6,7 @@ import watchingReducer from './watchingReducer';
 import starredReducer from './starredReducer';
 import reposReducer from './reposReducer';
 import trendingReducer from './trendingReducer';
+import userReducer from './userReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
   watching: watchingReducer,
   starred: starredReducer,
   repos: reposReducer,
-  trending: trendingReducer
+  trending: trendingReducer,
+  github_urls: userReducer
 });
