@@ -28,6 +28,7 @@ export default function(state = initialState, action) {
         events_url: action.payload.events_url.replace(/{.+/g, '').trim()
       };
     }
+
     default:
       return state;
   }

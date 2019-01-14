@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getFollowList } from '../actions/follwerActions';
 import List from './List';
 import Loader from './Loader';
-let token = localStorage.getItem('github_token');
+
 class FeedComponent extends Component {
   state = {
     loading: true
@@ -12,8 +11,7 @@ class FeedComponent extends Component {
   componentDidMount() {
     this.setState({ loading: true });
     if (this.props.type === 'following') {
-      this.props.getFollowList(token);
-      this.setState({ loading: false });
+      console.log('following');
     }
     if (this.props.type === 'watching') {
       console.log('watch');
@@ -40,7 +38,7 @@ class FeedComponent extends Component {
           {this.state.loading ? (
             <Loader />
           ) : (
-            <List items={this.props.followers.followers} />
+            <List items={this.props.followers} />
           )}
         </div>
       </div>
@@ -55,10 +53,8 @@ const mapStateToProps = (state, ownProps) => ({
   starred: state.starred,
   repos: state.repos,
   watching: state.watching,
-  trending: state.trending
+  trending: state.trending,
+  github_urls: state.github_urls
 });
 
-export default connect(
-  mapStateToProps,
-  { getFollowList }
-)(FeedComponent);
+export default connect(mapStateToProps)(FeedComponent);

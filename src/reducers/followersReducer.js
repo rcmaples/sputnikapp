@@ -1,20 +1,13 @@
 import { GET_FOLLOWER_LIST, GET_FOLLOWER_ACT } from '../actions/types';
 
-const initialState = {
-  followers: {}
-};
+const initialState = [];
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_FOLLOWER_ACT:
-      return {
-        ...state
-      };
+      return state;
     case GET_FOLLOWER_LIST:
-      return {
-        ...state,
-        followers: action.payload
-      };
+      return { ...state, ...action.payload };
     default:
       return state;
   }
