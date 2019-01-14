@@ -1,7 +1,7 @@
 import github from '../api/github';
 
-export const getFollowList = token => async dispatch => {
-  const response = await github.get('/user/following', {
+export const getFollowList = (token, endpoint) => async dispatch => {
+  const response = await github.get(endpoint, {
     headers: { Authorization: `Bearer ${token}` }
   });
   dispatch({

@@ -7,6 +7,8 @@ import iconRepos from '../images/repos.svg';
 import iconStar from '../images/starred.svg';
 import iconWatch from '../images/watch.svg';
 import { setGitHubToken } from '../actions/authActions';
+import { getURLs, setGitHubURLs } from '../actions/userActions';
+
 import empty from 'is-empty';
 let token = localStorage.getItem('github_token');
 class Dashboard extends Component {
@@ -18,6 +20,7 @@ class Dashboard extends Component {
     if (empty(this.props.auth.github_token) && token) {
       this.props.setGitHubToken(token);
     }
+    this.props.setGitHubURLs(token);
   }
 
   render() {
@@ -75,10 +78,11 @@ const mapStateToProps = state => ({
   starred: state.starred,
   repos: state.repos,
   watching: state.watching,
-  trending: state.trending
+  trending: state.trending,
+  github_urls: state.github_urls
 });
 
 export default connect(
   mapStateToProps,
-  { setGitHubToken }
+  { setGitHubToken, getURLs, setGitHubURLs }
 )(Dashboard);
