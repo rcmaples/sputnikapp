@@ -64,3 +64,21 @@ export const setFollowersList = () => (dispatch, getState) => {
       console.error(err);
     });
 };
+
+export const createTargetUserRecord = () => (dispatch, getState) => {
+  const jwtToken = localStorage.getItem('jwtToken');
+  const data = getState().followers;
+
+  const json = JSON.stringify(data);
+  // console.log('setFollowersList Data: ', data);
+  axios
+    .patch(`${API_URL}/api/users/following`, json, {
+      headers: {
+        Authorization: jwtToken,
+        'Content-Type': 'Application/JSON'
+      }
+    })
+    .catch(err => {
+      console.error(err);
+    });
+}
