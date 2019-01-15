@@ -10,6 +10,7 @@
     "graphql": "^14.0.2",
     "is-empty": "^1.2.0",
     "jwt-decode": "^2.2.0",
+    "lodash.mapkeys": "^4.6.0",
     "node-sass": "^4.11.0",
     "react": "^16.6.3",
     "react-apollo": "^2.3.3",
