@@ -9,7 +9,7 @@ const List = props => {
 
   return (
     <div className="list">
-      {items.map(item => {
+      {Object.values(items).map(item => {
         return (
           <div key={item.id} className="list-item">
             <img src={item.avatar_url} alt={item.login} className="avatar" />
