@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import astronaut from '../images/astonaut-avatar.svg';
 import passkey from '../images/password-key.svg';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   loginUser,
@@ -30,7 +29,8 @@ class LoginForm extends Component {
         this.props.history.push('/github');
       }
     } else {
-      this.props.setGitHubToken(token);
+      // console.log('A calling setGitHubToken');
+      // this.props.setGitHubToken(token);
       if (this.props.auth.isAuthenticated) {
         this.props.history.push('/dashboard');
       }
@@ -38,13 +38,16 @@ class LoginForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let token = localStorage.getItem('github_token');
-    if (empty(token)) {
+    let token =
+      localStorage.getItem('github_token') && nextProps.auth.github_token;
+    if (!token) {
       if (nextProps.auth.isAuthenticated) {
         this.props.history.push('/github');
       }
     } else {
-      nextProps.setGitHubToken(token);
+      // console.log('B calling setGitHubToken');
+      // console.log('Bs token is: ', token);
+      // nextProps.setGitHubToken(token);
       if (nextProps.auth.isAuthenticated) {
         this.props.history.push('/dashboard');
       }
@@ -151,12 +154,6 @@ class LoginForm extends Component {
     );
   }
 }
-
-LoginForm.propTypes = {
-  loginUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
-};
 
 const mapStateToProps = state => ({
   auth: state.auth,
