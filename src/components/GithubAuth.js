@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getGithubToken } from '../actions/authActions';
+import { getGitHubToken } from '../actions/authActions';
 // import axios from 'axios';
 
 let GITHUB_CLIENT_ID, GITHUB_REDIRECT_URI, GITHUB_CODE;
@@ -21,7 +21,7 @@ class GithubAuth extends Component {
   componentDidMount() {
     if (this.props.location.search) {
       GITHUB_CODE = this.props.location.search.split('=')[1];
-      this.props.getGithubToken(GITHUB_CODE);
+      this.props.getGitHubToken(GITHUB_CODE);
     }
   }
 
@@ -63,5 +63,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getGithubToken }
+  { getGitHubToken }
 )(GithubAuth);

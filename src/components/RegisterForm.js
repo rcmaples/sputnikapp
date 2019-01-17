@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { registerUser, setUserLoading } from '../actions/authActions';
 import astronaut from '../images/astonaut-avatar.svg';
@@ -172,11 +172,11 @@ class RegisterForm extends Component {
   }
 }
 
-RegisterForm.propTypes = {
-  registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
-};
+// RegisterForm.propTypes = {
+//   registerUser: PropTypes.func.isRequired,
+//   auth: PropTypes.object.isRequired,
+//   errors: PropTypes.object.isRequired
+// };
 
 const mapStateToProps = state => ({
   auth: state.auth,

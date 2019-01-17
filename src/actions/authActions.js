@@ -45,14 +45,16 @@ export const loginUser = userData => dispatch => {
       setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch(setCurrentUser(decoded));
-      dispatch(setGitHubToken(github_access_token));
+      // console.log('D is calling setGitHubToken');
+      // console.log('Ds token is: ', github_access_token);
+      // dispatch(setGitHubToken(github_access_token));
       dispatch(setUserLoading(false));
     })
     .catch(err => {
       dispatch(setUserLoading(false));
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data
+        payload: err
       });
     });
 };
@@ -66,6 +68,7 @@ export const setCurrentUser = decoded => {
 };
 
 export const setGitHubToken = token => {
+  // console.log('authAction 71 - token is: ', token);
   return {
     type: SET_GITHUB_TOKEN,
     payload: token
@@ -107,11 +110,14 @@ export const logoutUser = () => dispatch => {
   localStorage.removeItem('github_token');
   setAuthToken(false);
   dispatch(setCurrentUser({}));
+  console.log('E is calling setGitHubToken');
+  // console.log('Es token is: ', '');
   dispatch(setGitHubToken(''));
   dispatch(setUserLoading(false));
 };
 
-export const getGithubToken = code => dispatch => {
+export const getGitHubToken = code => dispatch => {
+  console.log('F is going to run here.');
   dispatch(setUserLoading(true));
   axios
     .get(`${API_URL}/api/github/authorize/${code}`)
@@ -123,7 +129,9 @@ export const getGithubToken = code => dispatch => {
       return res;
     })
     .then(res => {
-      dispatch(setGithubToken(res.data.access_token));
+      console.log('f is calling setGitHubToken');
+      // console.log('fs token is: ', res.data.access_token);
+      dispatch(saveGitHubToken(res.data.access_token));
       dispatch(setUserLoading(false));
     })
     .catch(err => {
@@ -135,7 +143,7 @@ export const getGithubToken = code => dispatch => {
     });
 };
 
-export const setGithubToken = token => dispatch => {
+export const saveGitHubToken = token => dispatch => {
   const jwtToken = localStorage.getItem('jwtToken');
   const data = {
     github_access_token: token

@@ -41,6 +41,7 @@ export default function(state = initialState, action) {
         loading: false
       };
     case SET_GITHUB_TOKEN:
+      // console.log('action.payload: ', action.payload);
       return {
         ...state,
         github_token: action.payload,

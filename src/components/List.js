@@ -1,13 +1,15 @@
 import React from 'react';
 
 const List = props => {
+  // console.log(props);
   const { items } = props;
-  if (!items) return null;
-  if (!items.length) return <p>No items found.</p>;
+  // console.log('items: ', items);
+  if (!items) return <p>No items found.</p>;
+  // if (!items.length) return <p>No items found.</p>;
 
   return (
     <div className="list">
-      {items.map(item => {
+      {Object.values(items).map(item => {
         return (
           <div key={item.id} className="list-item">
             <img src={item.avatar_url} alt={item.login} className="avatar" />

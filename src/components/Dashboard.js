@@ -9,17 +9,20 @@ import iconWatch from '../images/watch.svg';
 import { setGitHubToken } from '../actions/authActions';
 import { getURLs, setGitHubURLs } from '../actions/userActions';
 
-import empty from 'is-empty';
-let token = localStorage.getItem('github_token');
+// import empty from 'is-empty';
+// let token = localStorage.getItem('github_token');
 class Dashboard extends Component {
   // constructor(props){
   //   super(props);
   //   props.
   // }
   componentDidMount() {
-    if (empty(this.props.auth.github_token) && token) {
-      this.props.setGitHubToken(token);
-    }
+    let token =
+      localStorage.getItem('github_token') || this.props.auth.github_token;
+
+    console.log('G is calling setGitHubToken');
+    // console.log('Gs token is: ', token);
+    this.props.setGitHubToken(token);
     this.props.setGitHubURLs(token);
   }
 
