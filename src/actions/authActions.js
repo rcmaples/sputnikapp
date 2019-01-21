@@ -11,11 +11,11 @@ import {
 } from './types';
 let API_URL = '';
 
-process.env.NODE_ENV === 'development'
-  ? (API_URL = 'http://localhost:5000')
-  : (API_URL = 'https://sputnik-server.herokuapp.com');
-
-// console.log('authActions will be posting to: ', API_URL);
+if (process.env.NODE_ENV === 'development') {
+  API_URL = require('../config/config').API_URL;
+} else {
+  API_URL = process.env.API_URL;
+}
 
 // Registration
 export const registerUser = (userData, history) => dispatch => {

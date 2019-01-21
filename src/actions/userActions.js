@@ -1,11 +1,13 @@
 import github from '../api/github';
 import axios from 'axios';
+import { getFollowList } from './followerActions';
 
 let API_URL = '';
-
-process.env.NODE_ENV === 'development'
-  ? (API_URL = 'http://localhost:5000')
-  : (API_URL = 'https://sputnik-server.herokuapp.com');
+if (process.env.NODE_ENV === 'development') {
+  API_URL = require('../config/config').API_URL;
+} else {
+  API_URL = process.env.API_URL;
+}
 
 export const getURLs = token => async dispatch => {
   const response = await github.get('/user', {
@@ -17,16 +19,17 @@ export const getURLs = token => async dispatch => {
   });
 };
 
-const getFollowList = (token, endpoint) => async dispatch => {
-  const response = await github.get(endpoint, {
-    headers: { Authorization: `Bearer ${token}` }
-  });
-  dispatch({
-    type: 'GET_FOLLOWER_LIST',
-    payload: response.data
-  });
-  dispatch(setFollowersList());
-};
+// Moved to followerActions
+// const getFollowList = (token, endpoint) => async dispatch => {
+//   const response = await github.get(endpoint, {
+//     headers: { Authorization: `Bearer ${token}` }
+//   });
+//   dispatch({
+//     type: 'GET_FOLLOWER_LIST',
+//     payload: response.data
+//   });
+//   dispatch(setFollowersList());
+// };
 
 export const setGitHubURLs = token => async (dispatch, getState) => {
   const jwtToken = localStorage.getItem('jwtToken');
@@ -47,23 +50,24 @@ export const setGitHubURLs = token => async (dispatch, getState) => {
   await dispatch(getFollowList(token, following_endpoint));
 };
 
-export const setFollowersList = () => (dispatch, getState) => {
-  const jwtToken = localStorage.getItem('jwtToken');
-  const data = getState().followers;
+// Moved to followerActions
+// export const setFollowersList = () => (dispatch, getState) => {
+//   const jwtToken = localStorage.getItem('jwtToken');
+//   const data = getState().followers;
 
-  const json = JSON.stringify(data);
-  // console.log('setFollowersList Data: ', data);
-  axios
-    .patch(`${API_URL}/api/users/following`, json, {
-      headers: {
-        Authorization: jwtToken,
-        'Content-Type': 'Application/JSON'
-      }
-    })
-    .catch(err => {
-      console.error(err);
-    });
-};
+//   const json = JSON.stringify(data);
+//   // console.log('setFollowersList Data: ', data);
+//   axios
+//     .patch(`${API_URL}/api/users/following`, json, {
+//       headers: {
+//         Authorization: jwtToken,
+//         'Content-Type': 'Application/JSON'
+//       }
+//     })
+//     .catch(err => {
+//       console.error(err);
+//     });
+// };
 
 export const createTargetUserRecord = () => (dispatch, getState) => {
   const jwtToken = localStorage.getItem('jwtToken');
@@ -81,4 +85,4 @@ export const createTargetUserRecord = () => (dispatch, getState) => {
     .catch(err => {
       console.error(err);
     });
-}
+};
