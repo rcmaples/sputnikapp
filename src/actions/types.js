@@ -7,3 +7,4 @@ export const GET_GITHUB_TOKEN = 'GET_GITHUB_TOKEN';
 export const GET_FOLLOWER_LIST = 'GET_FOLLOWER_LIST';
 export const GET_FOLLOWER_ACT = 'GET_FOLLOWER_ACT';
 export const SET_URLS = 'SET_URLS';
+export const GET_REPOS_LIST = 'GET_REPOS_LIST';
