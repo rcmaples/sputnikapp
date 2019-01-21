@@ -1,6 +1,7 @@
 import github from '../api/github';
 import axios from 'axios';
 import { getFollowList } from './followerActions';
+import { getReposList } from './reposActions';
 
 let API_URL = '';
 if (process.env.NODE_ENV === 'development') {
@@ -36,6 +37,7 @@ export const setGitHubURLs = token => async (dispatch, getState) => {
   await dispatch(getURLs(token));
   const data = getState().github_urls;
   const following_endpoint = getState().github_urls.following_url;
+  const repos_endpoint = getState().github_urls.repos_url;
   axios
     .patch(`${API_URL}/api/users/urls`, data, {
       headers: {
@@ -48,6 +50,7 @@ export const setGitHubURLs = token => async (dispatch, getState) => {
       //set loading to false
     });
   await dispatch(getFollowList(token, following_endpoint));
+  await dispatch(getReposList(token, repos_endpoint));
 };
 
 // Moved to followerActions
