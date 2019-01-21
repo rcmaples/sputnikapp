@@ -3,6 +3,8 @@ import axios from 'axios';
 import { getFollowList } from './followerActions';
 import { getReposList } from './reposActions';
 import { getStarsList } from './starredActions';
+import { getWatchingList } from './watchingActions';
+import { getTrendingList } from './trendingActions';
 
 let API_URL = '';
 if (process.env.NODE_ENV === 'development') {
@@ -21,18 +23,6 @@ export const getURLs = token => async dispatch => {
   });
 };
 
-// Moved to followerActions
-// const getFollowList = (token, endpoint) => async dispatch => {
-//   const response = await github.get(endpoint, {
-//     headers: { Authorization: `Bearer ${token}` }
-//   });
-//   dispatch({
-//     type: 'GET_FOLLOWER_LIST',
-//     payload: response.data
-//   });
-//   dispatch(setFollowersList());
-// };
-
 export const setGitHubURLs = token => async (dispatch, getState) => {
   const jwtToken = localStorage.getItem('jwtToken');
   await dispatch(getURLs(token));
@@ -40,6 +30,7 @@ export const setGitHubURLs = token => async (dispatch, getState) => {
   const following_endpoint = getState().github_urls.following_url;
   const repos_endpoint = getState().github_urls.repos_url;
   const starred_endpoint = getState().github_urls.starred_url;
+  const watching_endpoint = getState().github_urls.subscriptions_url;
   axios
     .patch(`${API_URL}/api/users/urls`, data, {
       headers: {
@@ -54,26 +45,9 @@ export const setGitHubURLs = token => async (dispatch, getState) => {
   await dispatch(getFollowList(token, following_endpoint));
   await dispatch(getReposList(token, repos_endpoint));
   await dispatch(getStarsList(token, starred_endpoint));
+  await dispatch(getWatchingList(token, watching_endpoint));
+  await dispatch(getTrendingList(token));
 };
-
-// Moved to followerActions
-// export const setFollowersList = () => (dispatch, getState) => {
-//   const jwtToken = localStorage.getItem('jwtToken');
-//   const data = getState().followers;
-
-//   const json = JSON.stringify(data);
-//   // console.log('setFollowersList Data: ', data);
-//   axios
-//     .patch(`${API_URL}/api/users/following`, json, {
-//       headers: {
-//         Authorization: jwtToken,
-//         'Content-Type': 'Application/JSON'
-//       }
-//     })
-//     .catch(err => {
-//       console.error(err);
-//     });
-// };
 
 export const createTargetUserRecord = () => (dispatch, getState) => {
   const jwtToken = localStorage.getItem('jwtToken');

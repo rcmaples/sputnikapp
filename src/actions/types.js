@@ -9,3 +9,5 @@ export const GET_FOLLOWER_ACT = 'GET_FOLLOWER_ACT';
 export const SET_URLS = 'SET_URLS';
 export const GET_REPOS_LIST = 'GET_REPOS_LIST';
 export const GET_STARS_LIST = 'GET_STARS_LIST';
+export const GET_WATCHING_LIST = 'GET_WATCHING_LIST';
+export const GET_TRENDING_LIST = 'GET_TRENDING_LIST';
