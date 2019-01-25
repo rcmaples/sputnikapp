@@ -1,11 +1,17 @@
 import github from '../api/github';
 import axios from 'axios';
+import { getFollowList } from './followerActions';
+import { getReposList } from './reposActions';
+import { getStarsList } from './starredActions';
+import { getWatchingList } from './watchingActions';
+import { getTrendingList } from './trendingActions';
 
 let API_URL = '';
-
-process.env.NODE_ENV === 'development'
-  ? (API_URL = 'http://localhost:5000')
-  : (API_URL = 'https://sputnik-server.herokuapp.com');
+if (process.env.NODE_ENV === 'development') {
+  API_URL = require('../config/config').API_URL;
+} else {
+  API_URL = process.env.API_URL;
+}
 
 export const getURLs = token => async dispatch => {
   const response = await github.get('/user', {
@@ -17,22 +23,14 @@ export const getURLs = token => async dispatch => {
   });
 };
 
-const getFollowList = (token, endpoint) => async dispatch => {
-  const response = await github.get(endpoint, {
-    headers: { Authorization: `Bearer ${token}` }
-  });
-  dispatch({
-    type: 'GET_FOLLOWER_LIST',
-    payload: response.data
-  });
-  dispatch(setFollowersList());
-};
-
 export const setGitHubURLs = token => async (dispatch, getState) => {
   const jwtToken = localStorage.getItem('jwtToken');
   await dispatch(getURLs(token));
   const data = getState().github_urls;
   const following_endpoint = getState().github_urls.following_url;
+  const repos_endpoint = getState().github_urls.repos_url;
+  const starred_endpoint = getState().github_urls.starred_url;
+  const watching_endpoint = getState().github_urls.subscriptions_url;
   axios
     .patch(`${API_URL}/api/users/urls`, data, {
       headers: {
@@ -45,24 +43,10 @@ export const setGitHubURLs = token => async (dispatch, getState) => {
       //set loading to false
     });
   await dispatch(getFollowList(token, following_endpoint));
-};
-
-export const setFollowersList = () => (dispatch, getState) => {
-  const jwtToken = localStorage.getItem('jwtToken');
-  const data = getState().followers;
-
-  const json = JSON.stringify(data);
-  // console.log('setFollowersList Data: ', data);
-  axios
-    .patch(`${API_URL}/api/users/following`, json, {
-      headers: {
-        Authorization: jwtToken,
-        'Content-Type': 'Application/JSON'
-      }
-    })
-    .catch(err => {
-      console.error(err);
-    });
+  await dispatch(getReposList(token, repos_endpoint));
+  await dispatch(getStarsList(token, starred_endpoint));
+  await dispatch(getWatchingList(token, watching_endpoint));
+  await dispatch(getTrendingList(token));
 };
 
 export const createTargetUserRecord = () => (dispatch, getState) => {
@@ -81,4 +65,4 @@ export const createTargetUserRecord = () => (dispatch, getState) => {
     .catch(err => {
       console.error(err);
     });
-}
+};
