@@ -54,7 +54,7 @@ export const loginUser = userData => dispatch => {
       dispatch(setUserLoading(false));
       dispatch({
         type: GET_ERRORS,
-        payload: err
+        payload: err.response.data
       });
     });
 };
