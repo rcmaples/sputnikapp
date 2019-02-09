@@ -19,6 +19,7 @@ export const getFollowList = (token, endpoint) => async dispatch => {
 };
 
 export const setFollowersList = () => (dispatch, getState) => {
+
   const jwtToken = localStorage.getItem('jwtToken');
   const data = getState().followers;
 

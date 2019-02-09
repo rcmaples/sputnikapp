@@ -11,6 +11,7 @@ class FeedComponent extends Component {
   componentDidMount() {
     this.setState({ loading: true });
     if (this.props.type === 'following') {
+      
       this.setState({ loading: false });
     }
     if (this.props.type === 'watching') {
