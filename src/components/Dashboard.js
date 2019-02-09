@@ -17,7 +17,6 @@ class Dashboard extends Component {
   //   props.
   // }
   componentDidMount() {
-    console.log(process.env);
     let token =
       localStorage.getItem('github_token') || this.props.auth.github_token;
 

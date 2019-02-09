@@ -4,7 +4,7 @@ let API_URL = '';
 if (process.env.NODE_ENV === 'development') {
   API_URL = require('../config/config').API_URL;
 } else {
-  API_URL = process.env.API_URL;
+  API_URL = `https://sputnik-server.herokuapp.com/`;
 }
 
 export const getFollowList = (token, endpoint) => async dispatch => {
@@ -19,7 +19,6 @@ export const getFollowList = (token, endpoint) => async dispatch => {
 };
 
 export const setFollowersList = () => (dispatch, getState) => {
-
   const jwtToken = localStorage.getItem('jwtToken');
   const data = getState().followers;
 
