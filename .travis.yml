@@ -2,9 +2,9 @@ language: node_js
 node_js: node
 cache:
   directories:
-  - node_modules
+    - node_modules
 env:
-- CI=true
+  - CI=true
 deploy:
   provider: heroku
   api_key:
@@ -12,3 +12,6 @@ deploy:
   app: sputnikapp
   on:
     repo: rcmaples/sputnikapp
+branches:
+  except:
+    - development
