@@ -35,6 +35,7 @@ class Dashboard extends Component {
           alt="following"
           name="Following"
           className="feedComponent--following"
+          list="following"
           // token={token}
         />
         <div className="dashboard-center">

@@ -14,7 +14,7 @@ let API_URL = '';
 if (process.env.NODE_ENV === 'development') {
   API_URL = require('../config/config').API_URL;
 } else {
-  API_URL = process.env.API_URL;
+  API_URL = `https://sputnik-server.herokuapp.com/`;
 }
 
 // Registration
@@ -54,7 +54,7 @@ export const loginUser = userData => dispatch => {
       dispatch(setUserLoading(false));
       dispatch({
         type: GET_ERRORS,
-        payload: err
+        payload: err.response.data
       });
     });
 };

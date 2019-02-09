@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 class LandingPage extends Component {
   render() {
+    console.log(process.env);
     return (
       <div className="landingPage">
         <div className="feedComponentHeader">

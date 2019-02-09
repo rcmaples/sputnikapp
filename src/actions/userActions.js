@@ -10,7 +10,7 @@ let API_URL = '';
 if (process.env.NODE_ENV === 'development') {
   API_URL = require('../config/config').API_URL;
 } else {
-  API_URL = process.env.API_URL;
+  API_URL = `https://sputnik-server.herokuapp.com/`;
 }
 
 export const getURLs = token => async dispatch => {
@@ -50,19 +50,21 @@ export const setGitHubURLs = token => async (dispatch, getState) => {
 };
 
 export const createTargetUserRecord = () => (dispatch, getState) => {
-  const jwtToken = localStorage.getItem('jwtToken');
+  // const jwtToken = localStorage.getItem('jwtToken');
   const data = getState().followers;
 
-  const json = JSON.stringify(data);
-  // console.log('setFollowersList Data: ', data);
-  axios
-    .patch(`${API_URL}/api/users/following`, json, {
-      headers: {
-        Authorization: jwtToken,
-        'Content-Type': 'Application/JSON'
-      }
-    })
-    .catch(err => {
-      console.error(err);
-    });
+  for (let follower of data) {
+    const json = JSON.stringify(follower);
+    console.log(json);
+    // axios
+    // .post(`${API_URL}/api/target-user`, json, {
+    //   headers: {
+    //     Authorization: jwtToken,
+    //     'Content-Type': 'Application/JSON'
+    //   }
+    // })
+    // .catch(err => {
+    //   console.error(err);
+    // });
+  }
 };
