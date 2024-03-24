@@ -3,26 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "apollo-boost": "^0.1.23",
-    "axios": "^0.18.0",
-    "dotenv": "^6.2.0",
-    "formik": "^1.4.1",
-    "graphql": "^14.0.2",
+    "axios": "^1.6.8",
+    "dart-sass": "^1.25.0",
+    "dotenv": "^16.4.5",
+    "formik": "^2.4.5",
+    "graphql": "^16.8.1",
     "is-empty": "^1.2.0",
-    "jwt-decode": "^2.2.0",
+    "jwt-decode": "^4.0.0",
     "lodash.mapkeys": "^4.6.0",
-    "moment": "^2.23.0",
-    "node-sass": "^4.11.0",
-    "react": "^16.6.3",
-    "react-apollo": "^2.3.3",
-    "react-dom": "^16.6.3",
-    "react-redux": "^6.0.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1",
-    "redux": "^4.0.1",
-    "redux-devtools-extension": "^2.13.7",
-    "redux-thunk": "^2.3.0",
-    "sass-loader": "^7.1.0"
+    "moment": "^2.30.1",
+    "react": "^18.2.0",
+    "react-apollo": "^3.1.5",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.1.0",
+    "react-router": "^6.22.3",
+    "react-router-dom": "^6.22.3",
+    "react-scripts": "^5.0.1",
+    "redux": "^5.0.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^3.1.0",
+    "sass-loader": "^14.1.1"
   },
   "scripts": {
     "start": "set HTTPS=true && react-scripts start",
@@ -34,21 +34,11 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
-  },
   "proxy": "http://localhost:8080",
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.7.1",
-    "enzyme-to-json": "^3.3.5"
-  }
+  ]
 }

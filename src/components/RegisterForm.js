@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { withRouter } from "../hooks/hooks";
 // import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { registerUser, setUserLoading } from '../actions/authActions';
-import astronaut from '../images/astonaut-avatar.svg';
-import passkey from '../images/password-key.svg';
-import email from '../images/email.svg';
-import Modal from './Modal';
+import { connect } from "react-redux";
+import { registerUser, setUserLoading } from "../actions/authActions";
+import astronaut from "../images/astonaut-avatar.svg";
+import passkey from "../images/password-key.svg";
+import email from "../images/email.svg";
+import Modal from "./Modal";
 
 class RegisterForm extends Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      email: '',
-      password: '',
-      password2: '',
-      errors: {}
+      name: "",
+      email: "",
+      password: "",
+      password2: "",
+      errors: {},
     };
   }
 
@@ -29,23 +29,23 @@ class RegisterForm extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
       });
     }
   }
 
-  onChange = e => {
+  onChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     this.props.setUserLoading(true);
     const newUser = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      password2: this.state.password2
+      password2: this.state.password2,
     };
 
     this.props.registerUser(newUser, this.props.history);
@@ -73,8 +73,8 @@ class RegisterForm extends Component {
                 alt="name"
                 className={
                   errors.name
-                    ? 'form-icon error-color'
-                    : 'form-icon default-color'
+                    ? "form-icon error-color"
+                    : "form-icon default-color"
                 }
               />
               <input
@@ -96,8 +96,8 @@ class RegisterForm extends Component {
                 alt="email"
                 className={
                   errors.email
-                    ? 'form-icon error-color'
-                    : 'form-icon default-color'
+                    ? "form-icon error-color"
+                    : "form-icon default-color"
                 }
               />
               <input
@@ -120,8 +120,8 @@ class RegisterForm extends Component {
                 alt="passkey"
                 className={
                   errors.password
-                    ? 'form-icon error-color'
-                    : 'form-icon default-color'
+                    ? "form-icon error-color"
+                    : "form-icon default-color"
                 }
               />
               <input
@@ -143,8 +143,8 @@ class RegisterForm extends Component {
                 alt="passkey"
                 className={
                   errors.password2
-                    ? 'form-icon error-color'
-                    : 'form-icon default-color'
+                    ? "form-icon error-color"
+                    : "form-icon default-color"
                 }
               />
               <input
@@ -163,7 +163,7 @@ class RegisterForm extends Component {
               type="submit"
               value="Sign up"
               className="register-button"
-              style={{ float: 'right' }}
+              style={{ float: "right" }}
             />
           </fieldset>
         </form>
@@ -178,13 +178,12 @@ class RegisterForm extends Component {
 //   errors: PropTypes.object.isRequired
 // };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
   errors: state.errors,
-  loading: state.loading
+  loading: state.loading,
 });
 
-export default connect(
-  mapStateToProps,
-  { registerUser, setUserLoading }
-)(withRouter(RegisterForm));
+export default connect(mapStateToProps, { registerUser, setUserLoading })(
+  withRouter(RegisterForm)
+);

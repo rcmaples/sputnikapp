@@ -1,30 +1,30 @@
-import github from '../api/github';
-import axios from 'axios';
-import { getFollowList } from './followerActions';
-import { getReposList } from './reposActions';
-import { getStarsList } from './starredActions';
-import { getWatchingList } from './watchingActions';
-import { getTrendingList } from './trendingActions';
+import github from "../api/github";
+import axios from "axios";
+import { getFollowList } from "./followerActions";
+import { getReposList } from "./reposActions";
+import { getStarsList } from "./starredActions";
+import { getWatchingList } from "./watchingActions";
+import { getTrendingList } from "./trendingActions";
 
-let API_URL = '';
-if (process.env.NODE_ENV === 'development') {
-  API_URL = require('../config/config').API_URL;
-} else {
-  API_URL = `https://sputnik-server.herokuapp.com`;
-}
+let API_URL = "";
+// if (process.env.NODE_ENV === 'development') {
+//   API_URL = require('../config/config').API_URL;
+// } else {
+//   API_URL = `https://sputnik-server.herokuapp.com`;
+// }
 
-export const getURLs = token => async dispatch => {
-  const response = await github.get('/user', {
-    headers: { Authorization: `Bearer ${token}` }
+export const getURLs = (token) => async (dispatch) => {
+  const response = await github.get("/user", {
+    headers: { Authorization: `Bearer ${token}` },
   });
   dispatch({
-    type: 'SET_URLS',
-    payload: response.data
+    type: "SET_URLS",
+    payload: response.data,
   });
 };
 
-export const setGitHubURLs = token => async (dispatch, getState) => {
-  const jwtToken = localStorage.getItem('jwtToken');
+export const setGitHubURLs = (token) => async (dispatch, getState) => {
+  const jwtToken = localStorage.getItem("jwtToken");
   await dispatch(getURLs(token));
   const data = getState().github_urls;
   const following_endpoint = getState().github_urls.following_url;
@@ -34,10 +34,10 @@ export const setGitHubURLs = token => async (dispatch, getState) => {
   axios
     .patch(`${API_URL}/api/users/urls`, data, {
       headers: {
-        Authorization: jwtToken
-      }
+        Authorization: jwtToken,
+      },
     })
-    .catch(err => {
+    .catch((err) => {
       console.error(err);
       //more error handling
       //set loading to false
